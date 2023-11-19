@@ -243,26 +243,26 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 ![image](https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/e8a4282f-3702-4aac-9d47-fe776f6039a9)
 
 
+
 ## 9. 노력한 점 
 **(장혜리)**
 - 원활한 협업을 위해 엔티티 구현 등 다른 팀원의 업무에 필요한 부분(엔티티 등)은 우선적으로 구현하였습니다.
 - 빠르고 상세한 코드 리뷰를 위해 노력하였습니다
     <details>
       <summary>코드 리뷰 예시 (자세히) </summary>
+        
+  [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
   
-  - [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
-     <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e">
-    
+  <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e" width = "80%">
+  
     </details>
 
-  
-  
 - 단위 테스트 작성을 위해 노력하였습니다.
-  <details>
+    <details>
       <summary>단위 테스트 예시 (자세히) </summary>
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/85dd6672-9332-46a8-8d80-e883affa438a">
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/4d42119d-4224-43f0-829f-f70ebfc6bdba">
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/6b25841d-91e7-47b2-a0a6-11204830e365">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/85dd6672-9332-46a8-8d80-e883affa438a" width = "80%">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/4d42119d-4224-43f0-829f-f70ebfc6bdba" width = "80%">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/6b25841d-91e7-47b2-a0a6-11204830e365" width = "80%">
   </details>
 
 ## 10. 구현 과정 (설계 및 의도)
