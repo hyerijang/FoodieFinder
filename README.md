@@ -60,7 +60,8 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 - [6.동작예시](#6-동작예시)
 - [7.API 문서](#7-api-document)
 - [8.프로젝트 스케줄링](#8-프로젝트-스케줄링)
-- [9.협업 규칙](#9-협업-규칙)
+- [9.노력한 점](#9-노력한-점)
+- [10.구현 과정 (설계 및 의도)](#10-구현-과정-설계-및-의도)
 
 ## 1. 개발 기간
 
@@ -68,7 +69,6 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 
 ## 2. 프로젝트 요구사항
 
-[🍣지리기반 맛집 추천 웹 서비스 요구사항](https://hyerijang.notion.site/ed13c3afee524dc38a6a86a29489a75e?pvs=4)
 
 ### 유저스토리
 
@@ -96,7 +96,7 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
     </tr>
     <tr>
         <td>장혜리</td>
-        <td>데이터 전처리, 데이터 저장, 점심 추천 서비스 구현</td>
+        <td>데이터 전처리, 데이터 저장, 디스코드 점심 추천 서비스 구현</td>
     </tr>
     <tr>
         <td>정지원</td>
@@ -243,32 +243,50 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 ![image](https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/e8a4282f-3702-4aac-9d47-fe776f6039a9)
 
 
-## 9. 협업 규칙
-### Branch Strategy
-- `main`, `develop`, `feature`로 나누어서 진행
-- `feature`는 `이슈번호-기능_이름` 으로 명명
+## 9. 노력한 점 
+**(장혜리)**
+- 원활한 협업을 위해 엔티티 구현 등 다른 팀원의 업무에 필요한 부분(엔티티 등)은 우선적으로 구현하였습니다.
+- 빠르고 상세한 코드 리뷰를 위해 노력하였습니다
+    <details>
+      <summary>코드 리뷰 예시 (자세히) </summary>
+  
+  - [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
+     <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e">
+    
+    </details>
 
-### Commit Convention 
-```
-# 타입 : 제목 형식으로 작성하며 제목은 최대 50글자 정도로만 입력
-# 제목을 아랫줄에 작성, 제목 끝에 마침표 금지, 무엇을 했는지 명확하게 작성
+  
+  
+- 단위 테스트 작성을 위해 노력하였습니다.
+  <details>
+      <summary>단위 테스트 예시 (자세히) </summary>
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/85dd6672-9332-46a8-8d80-e883affa438a">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/4d42119d-4224-43f0-829f-f70ebfc6bdba">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/6b25841d-91e7-47b2-a0a6-11204830e365">
+  </details>
 
-################
-# 본문(추가 설명)을 아랫줄에 작성
+## 10. 구현 과정 (설계 및 의도)
+**(장혜리)**
 
-################
-# 꼬릿말(footer)을 아랫줄에 작성 (관련된 이슈 번호 등 추가)
+<details>
+    <summary>데이터 전처리 및 저장</summary>
 
-################
-# feat : 기능 추가
-# fix : 버그 수정
-# docs : 문서 수정
-# test : 테스트 코드 추가
-# refactor : 코드 리팩토링
-# style : 코드 의미에 영향을 주지 않는 변경사항
-# chore : 빌드 부분 혹은 패키지 매니저 수정사항
-# cicd : CI/CD 관련 설정
-################
-```
+  - JSON 데이터를 가공하여 제가 구현한 Restaurant, Raw Restaurant 엔티티에 넣어 저장
+  - **raw 데이터 테이블** - 특별한 변환이나 전처리 없이 String 그대로 저장
+  - **실제 서비스에 이용되는 테이블** - raw 데이터 테이블에서 실제 사용되는 필드만 추리고, 데이터에 맞게 타입을 변경하여 저장
+</details>
+<details>
+    <summary>디스코드 점심 추천 서비스</summary>
 
-기타 규칙은 [Team Q Notion - 팀 규칙 및 컨벤션](https://www.notion.so/f22c8da6c7e4430a90dffc34b7b7d80c)을 참조해 주세요.
+  - 디스코드 메시지 양식에 데이터를 가공 후, **매일 정오 유저가 등록해 둔 웹 훅 URL로 메시지를 발송**
+  - **데이터 가공**
+    - DB에서 맛집 정보를 조회할 때  Spring Data JPA의 **findAll**을 쓸 경우 경기도 전체의 식당 데이터를 가져오게 되어 심각한 **성능 저하**가 예상되었습니다.
+    - 따라서 **유저를 중심**으로 한 **정사각형 영역의 꼭짓점**을 구하여 유저 인근 N 미터 이내의 식당 정보만 가져오도록 구현하였습니다.
+  - **유저 점심 추천 알림을 설정할 수 있게 하는 API 구현**
+    - **알림 설정 API**를 통해 유저는 어느정도 거리 내의 맛집을 추천받을지, 또 한식, 중식 등 어떤 유형의 음식점을 추천받을지 선택 가능
+      -디스코드 메시지 발송
+    - Quarz 스케줄러와 Webflux로 매일 정오 Nonblocking 하게 발송하도록 구현
+      - **Quarz 스케줄러**의 경우 기존에 팀원분께서 데이터 수집에 이용하시던 부분을 그대로 차용해서 시간만 변경
+      - **Blocking** 방식의 경우 메시지 발송 이후 디스코드 측의 응답이 돌아올 때까지 대기해야 했기 때문에, 유휴 시간을 줄이고자 비동기 방식으로 메시지 발송을 구현
+</details>
+
