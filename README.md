@@ -60,8 +60,10 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 - [6.동작예시](#6-동작예시)
 - [7.API 문서](#7-api-document)
 - [8.프로젝트 스케줄링](#8-프로젝트-스케줄링)
-- [9.노력한 점](#9-노력한-점)
-- [10.구현 과정 (설계 및 의도)](#10-구현-과정-설계-및-의도)
+- [9.구현 과정 (설계 및 의도)](#9-구현-과정-설계-및-의도)
+- [10.디스코드 점심 추천 서비스 성능 개선](#10-디스코드-점심-추천-서비스-성능-개선)
+- [11.기타 노력한 점](#11-기타-노력한-점)
+
 
 ## 1. 개발 기간
 
@@ -231,6 +233,7 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 
 <img src="https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/b468a807-76fb-4957-a647-6f23ae79ea0a" width="60%" />
 
+
 ## 7. API Document
 최신 문서는 [FoodieFinder API Document](https://documenter.getpostman.com/view/13712893/2s9YXiY1Kv)를 참조해 주세요.
 
@@ -244,28 +247,8 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 
 
 
-## 9. 노력한 점 
-**(장혜리)**
-- 원활한 협업을 위해 엔티티 구현 등 다른 팀원의 업무에 필요한 부분(엔티티 등)은 우선적으로 구현하였습니다.
-- 빠르고 상세한 코드 리뷰를 위해 노력하였습니다
-    <details>
-      <summary>코드 리뷰 예시 (자세히) </summary>
-        
-  [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
-  
-  <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e" width = "80%">
-  
-    </details>
 
-- 단위 테스트 작성을 위해 노력하였습니다.
-    <details>
-      <summary>단위 테스트 예시 (자세히) </summary>
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/85dd6672-9332-46a8-8d80-e883affa438a" width = "80%">
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/4d42119d-4224-43f0-829f-f70ebfc6bdba" width = "80%">
-    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/6b25841d-91e7-47b2-a0a6-11204830e365" width = "80%">
-  </details>
-
-## 10. 구현 과정 (설계 및 의도)
+## 9. 구현 과정 (설계 및 의도)
 **(장혜리)**
 
 <details>
@@ -290,3 +273,43 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
       - **Blocking** 방식의 경우 메시지 발송 이후 디스코드 측의 응답이 돌아올 때까지 대기해야 했기 때문에, 유휴 시간을 줄이고자 비동기 방식으로 메시지 발송을 구현
 </details>
 
+
+## 10. 디스코드 점심 추천 서비스 성능 개선
+
+### 메시지 전송 : Blocking vs Nonblocking 성능 비교
+`성능 비교 결과` : **1회 전송되는 메시지 수가 많아 질 수록** Blocking vs Nonblocking에서 **Nonblocking이 더욱 유리**해짐.
+
+**메시지 `단건` 전송 기준, 각각 100회 수행**
+- Nonblocking으로 전환 한 결과 평균 응답 시간 403ms -> 18ms 로 감소 (약 **22배** 가량의 성능 개선)
+
+<img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/b200343d-6533-49c7-88b9-ab37f6f25513" width="60%">
+
+<img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9d8677c4-6c83-4c93-acdc-27083662374c" width="60%">
+
+**메시지 `10건` 전송 기준, 각각 3회 수행**
+- Nonblocking으로 전환 한 결과 평균 응답 시간 3705ms -> 39ms 로 감소 (약 **95배** 가량의 성능 개선)
+
+<img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9aab0d4f-7fda-4d28-989b-f94e51d15ab7" width="60%">
+
+<img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/2282c688-62b6-4397-8f19-4b61e97f1857" width="60%">
+
+## 11. 기타 노력한 점 
+**(장혜리)**
+- 원활한 협업을 위해 엔티티 구현 등 다른 팀원의 업무에 필요한 부분(엔티티 등)은 우선적으로 구현하였습니다.
+- 빠르고 상세한 코드 리뷰를 위해 노력하였습니다
+    <details>
+      <summary>코드 리뷰 예시 (자세히) </summary>
+        
+  [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
+  
+  <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e" width = "80%">
+  
+    </details>
+
+- 단위 테스트 작성을 위해 노력하였습니다.
+    <details>
+      <summary>단위 테스트 예시 (자세히) </summary>
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/85dd6672-9332-46a8-8d80-e883affa438a" width = "80%">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/4d42119d-4224-43f0-829f-f70ebfc6bdba" width = "80%">
+    <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/6b25841d-91e7-47b2-a0a6-11204830e365" width = "80%">
+  </details>
