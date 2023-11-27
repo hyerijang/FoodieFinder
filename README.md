@@ -8,10 +8,11 @@
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/Spring Boot 3.1.5-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/Spring Data JPA-gray?style=for-the-badge&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens"/></a>
 <img src="https://img.shields.io/badge/Junit-25A162?style=for-the-badge&logo=JUnit5&logoColor=white"/></a>
 </div>
 <div align="center">
+<img src="https://img.shields.io/badge/Spring Data JPA-gray?style=for-the-badge&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/MySQL 8-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/></a>
 <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Redis&color=DC382D&logo=Redis&logoColor=FFFFFF&label=" alt="Redis">
 <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Amazon+EC2&color=222222&logo=Amazon+EC2&logoColor=FF9900&label=" alt="Amazon EC2">
@@ -275,23 +276,23 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 
 
 ## 10. 디스코드 점심 추천 서비스 성능 개선
-
 ### 메시지 전송 : Blocking vs Nonblocking 성능 비교
-`성능 비교 결과` : **1회 전송되는 메시지 수가 많아 질 수록** Blocking vs Nonblocking에서 **Nonblocking이 더욱 유리**해짐.
+`성능 비교 결과` : **1회 전송되는 메시지 수가 많아 질 수록** Blocking vs Nonblocking에서 **Nonblocking이 더욱 유리**해짐. (CPU 유휴시간 감소)
 
-**메시지 `단건` 전송 기준, 각각 100회 수행**
+**보내야하는 메시지가 `1건` 일때, (각각 100회 수행)**
 - Nonblocking으로 전환 한 결과 평균 응답 시간 403ms -> 18ms 로 감소 (약 **22배** 가량의 성능 개선)
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/b200343d-6533-49c7-88b9-ab37f6f25513" width="60%">
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9d8677c4-6c83-4c93-acdc-27083662374c" width="60%">
 
-**메시지 `10건` 전송 기준, 각각 3회 수행**
+**보내야하는 메시지가 `10건` 일때, (각각 3회 수행)**
 - Nonblocking으로 전환 한 결과 평균 응답 시간 3705ms -> 39ms 로 감소 (약 **95배** 가량의 성능 개선)
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9aab0d4f-7fda-4d28-989b-f94e51d15ab7" width="60%">
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/2282c688-62b6-4397-8f19-4b61e97f1857" width="60%">
+
 
 ## 11. 기타 노력한 점 
 **(장혜리)**
