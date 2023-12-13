@@ -51,12 +51,12 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 </table>
 </div>
 
-
 ## 0. 목차
+
 - [1.개발 기간](#1-개발-기간)
 - [2.프로젝트 요구사항](#2-프로젝트-요구사항)
 - [3.담당 역할](#3-담당-역할)
-- [4.프로젝트 구조](#4-프로젝트-구조)
+- [4.프로젝트 아키텍처](#4-프로젝트-아키텍처)
 - [5.ERD](#5-erd)
 - [6.동작예시](#6-동작예시)
 - [7.API 문서](#7-api-document)
@@ -65,13 +65,11 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 - [10.성능 개선 - 디스코드 점심 추천 서비스 (장혜리)](#10-성능-개선---디스코드-점심-추천-서비스-장혜리)
 - [11.기타 노력한 점](#11-기타-노력한-점)
 
-
 ## 1. 개발 기간
 
 2023.10.31 ~ 2023.11.08  (9 days)
 
 ## 2. 프로젝트 요구사항
-
 
 ### 유저스토리
 
@@ -107,111 +105,9 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
     </tr>
 </table>
 
-## 4. 프로젝트 구조
+## 4. 프로젝트 아키텍처
 
-<details>
-    <summary>자세히</summary>
-
-#### main
-```
-├─main
-│  ├─java
-│  │  └─com
-│  │      └─foodiefinder
-│  │          ├─auth
-│  │          │  ├─config
-│  │          │  ├─controller
-│  │          │  ├─dto
-│  │          │  ├─filter
-│  │          │  ├─jwt
-│  │          │  └─service
-│  │          ├─cities
-│  │          │  ├─controller
-│  │          │  │  └─response
-│  │          │  ├─domain
-│  │          │  ├─factory
-│  │          │  └─service
-│  │          ├─common
-|  |          |  ├─cache
-│  │          │  ├─config
-│  │          │  ├─dto
-│  │          │  ├─entity
-|  |          |  ├─enums
-│  │          │  └─exception
-│  │          ├─datapipeline
-|  |          |  ├─cache
-│  │          │  ├─config
-│  │          │  ├─enums
-│  │          │  ├─job
-│  │          │  ├─processor
-│  │          │  │  └─dto
-│  │          │  ├─reader
-│  │          │  ├─step
-│  │          │  ├─util
-|  |          |  |  ├─hash
-|  |          |  |  └─request
-│  │          │  └─writer
-│  │          │      ├─entity
-│  │          │      └─repository
-│  │          ├─notification
-│  │          │  ├─dto
-│  │          │  ├─scheduler
-│  │          │  └─service
-|  |          ├─restaurants
-|  |          |  ├─cache
-|  |          |  ├─controller
-|  |          |  ├─dto
-|  |          |  ├─entity
-|  |          |  ├─enums
-|  |          |  └─service
-│  │          ├─settings
-│  │          │  ├─controller
-│  │          │  ├─dto
-│  │          │  ├─entity
-│  │          │  ├─repository
-│  │          │  ├─service
-│  │          │  └─valid
-│  │          └─user
-│  │              ├─controller
-│  │              ├─crypto
-│  │              ├─dto
-│  │              ├─entity
-│  │              ├─repository
-│  │              └─service
-│  └─resources
-```
-
-#### test
-``` 
-│─test
-├─java
-│  └─com
-│      └─foodiefinder
-│          ├─auth
-│          │  ├─controller
-│          │  └─service
-│          ├─cities
-│          ├─config
-│          ├─datapipeline
-│          │  ├─processor
-│          │  ├─reader
-│          │  ├─step
-│          │  └─writer
-│          │      └─repository
-│          ├─notification
-│          │  └─service
-│          ├─settings
-│          │  ├─controller
-│          │  ├─service
-│          │  └─valid
-│          └─user
-│              ├─controller
-│              └─service
-└─resources
-
-```
-
-</details>
+<img src = "https://github.com/hyerijang/FoodieFinder/assets/46921979/adae3b6a-ca9d-421a-be21-ac6f5de9c4db">
 
 ## 5. ERD
 
@@ -226,60 +122,64 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 ## 6. 동작예시
 
 ### RDS
+
 <img src="https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/78288c73-15cc-4b73-adfe-e31bafb62708" width="60%" />
 <img src="https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/98e8fcb9-8abb-41c6-987d-ceba9676dbc3" width="60%" />
-
 
 ### 디스코드 점심 추천 서비스 예시
 
 <img src="https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/b468a807-76fb-4957-a647-6f23ae79ea0a" width="60%" />
 
-
 ## 7. API Document
+
 최신 문서는 [FoodieFinder API Document](https://documenter.getpostman.com/view/13712893/2s9YXiY1Kv)를 참조해 주세요.
 
 ## 8. 프로젝트 스케줄링
 
 ### [Github Project](https://github.com/orgs/wanted-quantum-jump/projects/5)
+
 ![image](https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/fa45837d-3362-4eff-901b-e42dc35c8319)
 
 ### [Team Q Notion - 일정관리 ](https://gifted-radiator-a91.notion.site/a0678da1b97a4cc6a3ade58ade37a304?v=d97f2cfce06e4abbb186dabc6d90bf55&pvs=4)
+
 ![image](https://github.com/wanted-quantum-jump/FoodieFinder/assets/46921979/e8a4282f-3702-4aac-9d47-fe776f6039a9)
 
-
-
-
 ## 9. 구현 과정 (설계 및 의도)
+
 **(장혜리)**
 
 <details>
     <summary>데이터 전처리 및 저장</summary>
 
-  - JSON 데이터를 가공하여 제가 구현한 Restaurant, Raw Restaurant 엔티티에 넣어 저장
-  - **raw 데이터 테이블** - 특별한 변환이나 전처리 없이 String 그대로 저장
-  - **실제 서비스에 이용되는 테이블** - raw 데이터 테이블에서 실제 사용되는 필드만 추리고, 데이터에 맞게 타입을 변경하여 저장
+- JSON 데이터를 가공하여 제가 구현한 Restaurant, Raw Restaurant 엔티티에 넣어 저장
+- **raw 데이터 테이블** - 특별한 변환이나 전처리 없이 String 그대로 저장
+- **실제 서비스에 이용되는 테이블** - raw 데이터 테이블에서 실제 사용되는 필드만 추리고, 데이터에 맞게 타입을 변경하여 저장
+
 </details>
 <details>
     <summary>디스코드 점심 추천 서비스</summary>
 
-  - 디스코드 메시지 양식에 데이터를 가공 후, **매일 정오 유저가 등록해 둔 웹 훅 URL로 메시지를 발송**
-  - **데이터 가공**
-    - DB에서 맛집 정보를 조회할 때  Spring Data JPA의 **findAll**을 쓸 경우 경기도 전체의 식당 데이터를 가져오게 되어 심각한 **성능 저하**가 예상되었습니다.
+- 디스코드 메시지 양식에 데이터를 가공 후, **매일 정오 유저가 등록해 둔 웹 훅 URL로 메시지를 발송**
+- **데이터 가공**
+    - DB에서 맛집 정보를 조회할 때 Spring Data JPA의 **findAll**을 쓸 경우 경기도 전체의 식당 데이터를 가져오게 되어 심각한 **성능 저하**가 예상되었습니다.
     - 따라서 **유저를 중심**으로 한 **정사각형 영역의 꼭짓점**을 구하여 유저 인근 N 미터 이내의 식당 정보만 가져오도록 구현하였습니다.
-  - **유저 점심 추천 알림을 설정할 수 있게 하는 API 구현**
+- **유저 점심 추천 알림을 설정할 수 있게 하는 API 구현**
     - **알림 설정 API**를 통해 유저는 어느정도 거리 내의 맛집을 추천받을지, 또 한식, 중식 등 어떤 유형의 음식점을 추천받을지 선택 가능
       -디스코드 메시지 발송
     - Quarz 스케줄러와 Webflux로 매일 정오 Nonblocking 하게 발송하도록 구현
-      - **Quarz 스케줄러**의 경우 기존에 팀원분께서 데이터 수집에 이용하시던 부분을 그대로 차용해서 시간만 변경
-      - **Blocking** 방식의 경우 메시지 발송 이후 디스코드 측의 응답이 돌아올 때까지 대기해야 했기 때문에, 유휴 시간을 줄이고자 비동기 방식으로 메시지 발송을 구현
+        - **Quarz 스케줄러**의 경우 기존에 팀원분께서 데이터 수집에 이용하시던 부분을 그대로 차용해서 시간만 변경
+        - **Blocking** 방식의 경우 메시지 발송 이후 디스코드 측의 응답이 돌아올 때까지 대기해야 했기 때문에, 유휴 시간을 줄이고자 비동기 방식으로 메시지 발송을 구현
+
 </details>
 
-
 ## 10. 성능 개선 - 디스코드 점심 추천 서비스 (장혜리)
+
 ### 메시지 전송 : Blocking vs Nonblocking 성능 비교
+
 `성능 비교 결과` : **1회 전송되는 메시지 수가 많아 질 수록** Blocking vs Nonblocking에서 **Nonblocking이 더욱 유리**해짐. (CPU 유휴시간 감소)
 
 **보내야하는 메시지가 `1건` 일때, (각각 100회 수행)**
+
 - Nonblocking으로 전환 한 결과 평균 응답 시간 403ms -> 18ms 로 감소 (약 **22배** 가량의 성능 개선)
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/b200343d-6533-49c7-88b9-ab37f6f25513" width="60%">
@@ -287,24 +187,26 @@ FoodieFinder는 공공데이터를 활용하여, 지역 음식점 목록을 자�
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9d8677c4-6c83-4c93-acdc-27083662374c" width="60%">
 
 **보내야하는 메시지가 `10건` 일때, (각각 3회 수행)**
+
 - Nonblocking으로 전환 한 결과 평균 응답 시간 3705ms -> 39ms 로 감소 (약 **95배** 가량의 성능 개선)
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/9aab0d4f-7fda-4d28-989b-f94e51d15ab7" width="60%">
 
 <img src="https://github.com/hyerijang/FoodieFinder/assets/46921979/2282c688-62b6-4397-8f19-4b61e97f1857" width="60%">
 
+## 11. 기타 노력한 점
 
-## 11. 기타 노력한 점 
 **(장혜리)**
+
 - 원활한 협업을 위해 엔티티 구현 등 다른 팀원의 업무에 필요한 부분(엔티티 등)은 우선적으로 구현하였습니다.
 - 빠르고 상세한 코드 리뷰를 위해 노력하였습니다
     <details>
       <summary>코드 리뷰 예시 (자세히) </summary>
-        
+
   [PR 예시](https://github.com/wanted-quantum-jump/FoodieFinder/pull/34)
-  
+
   <img src="https://github.com/hyerijang/daily-pay/assets/46921979/7bcbcfe2-306d-47a9-90e7-2adf8d7b4b0e" width = "80%">
-  
+
     </details>
 
 - 단위 테스트 작성을 위해 노력하였습니다.
